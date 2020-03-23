@@ -1,32 +1,30 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <Nav/>
+    <router-view />
   </div>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import Nav from './components/Nav.vue'
 
-#nav {
-  padding: 30px;
-}
+//const axios = require('axios').default;
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+export default {
+  data: () => {
+    return {
+      journals: [],
+      parents: [],
+    }
+  },
+  components: {
+    Nav
+  },
+  created(){
+    /*axios
+        .get('http://localhost:8888/wp-json/wp/v2/pages?per_page=100')
+        .then((res) => { this.journals = res.data })
+        .catch(error => console.log(error));*/
+  }
 }
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+</script>

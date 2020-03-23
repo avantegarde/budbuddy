@@ -1,0 +1,128 @@
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-kerning: auto;
+}
+html {
+  min-height: 100%;
+  font-size: 1em;
+  line-height: 1.4;
+  font-weight: 400;
+  font-family: 'Open Sans', 'Source Sans Pro', Roboto, 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', 'Myriad Pro', 'Segoe UI', Myriad, Helvetica, 'Lucida Grande', 'DejaVu Sans Condensed', 'Liberation Sans', 'Nimbus Sans L', Tahoma, Geneva, Arial, sans-serif;
+  -webkit-text-size-adjust: 100%;
+  background: #ebecf0;
+  color: #000000;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+a,
+a:visited {
+  color: #42b983;
+  text-decoration: none;
+}
+a:hover,
+a:focus {
+  color: #02282B;
+}
+#app {
+  text-align: center;
+}
+/* Morph Style */
+.morph {
+  border: 2px solid transparent;
+  background: linear-gradient(160deg, #f0f1f4 0%, #e4e6eb 100%);
+  box-shadow: -3px -3px 6px 2px #ffffff, 5px 5px 8px 0px rgba(0, 0, 0, 0.17), 1px 2px 2px 0px rgba(0, 0, 0, 0.1);
+  transition: 0.1s;
+  outline: none !important;
+}
+.morph.rounded {
+  border-radius: 20px;
+}
+.morph.rounded .rounded-inner {
+  border-radius: 20px;
+}
+input.morph {
+  border-radius: 50%;
+}
+.morph.active,
+.morph.inset {
+  border: 2px solid #fafafa;
+  box-shadow: inset -3px -3px 5px 0px #ffffff, -1px -1px 4px 0px #ffffff, inset 5px 5px 10px 0px rgba(0, 0, 0, 0.12), inset 2px 2px 3px 0px rgba(0, 0, 0, 0.07), 1px 2px 3px 0px rgba(0, 0, 0, 0.1);
+}
+input.morph.active,
+input.morph.inset,
+input.morph:active,
+input.morph:focus {
+  border: 2px solid #fafafa;
+  box-shadow: inset -3px -3px 5px 0px #ffffff, -1px -1px 4px 0px #ffffff, inset 5px 5px 10px 0px rgba(0, 0, 0, 0.12), inset 2px 2px 3px 0px rgba(0, 0, 0, 0.07), 1px 2px 3px 0px rgba(0, 0, 0, 0.1);
+}
+/* iOS checkbox */
+input[type="checkbox"].ios-checkbox {
+  display: none;
+}
+input[type="checkbox"].ios-checkbox + label {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  width: 60px;
+  height: 30px;
+}
+input[type="checkbox"].ios-checkbox + label:before,
+input[type="checkbox"].ios-checkbox + label:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 30px;
+  border-radius: 60px;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+input[type="checkbox"].ios-checkbox + label:before {
+  background-color: #eeeeee;
+  width: 60px;
+  -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+input[type="checkbox"].ios-checkbox + label:after {
+  width: 30px;
+  background-color: #ebecf0;
+  -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+input[type="checkbox"].ios-checkbox:checked + label:before {
+  background: linear-gradient(120deg, #22ff82, #21bdff, #5433ff);
+}
+input[type="checkbox"].ios-checkbox:checked + label:after {
+  left: 30px;
+}
+/* Progress Bars */
+.progress-item {
+  width: 10%;
+  height: 100%;
+  border: 1px solid #fff;
+  border-radius: 2rem;
+  padding-top: 15%;
+  box-sizing: border-box;
+  overflow: hidden;
+  z-index: 1;
+  align-self: flex-end;
+}
+.progress-inner {
+  background-image: linear-gradient(120deg, #22ff82, #21bdff, #5433ff);
+  border-radius: 2rem;
+  height: 100%;
+  opacity: 0.8;
+}
