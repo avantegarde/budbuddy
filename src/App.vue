@@ -1,14 +1,14 @@
 <template>
   <div id="app">
-    <Toolbar/>
-    <Nav/>
+    <Navbar/>
+    <!-- <Nav/> -->
     <router-view />
   </div>
 </template>
 
 <script>
-import Toolbar from './components/Toolbar.vue'
-import Nav from './components/Nav.vue'
+import Navbar from './components/Navbar.vue'
+//import Nav from './components/Nav.vue'
 
 //const axios = require('axios').default;
 
@@ -20,8 +20,8 @@ export default {
     }
   },
   components: {
-    Toolbar,
-    Nav
+    Navbar,
+    //Nav
   },
   created(){
     /*axios
