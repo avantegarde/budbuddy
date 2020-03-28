@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import { vuexfireMutations, firestoreAction } from 'vuexfire'
+import { db } from './db'
 
 Vue.use(Vuex)
 
@@ -8,7 +10,8 @@ const store = new Vuex.Store ({
     user: {
       loggedIn: false,
       data: null
-    }
+    },
+    comics: []
   },
   getters: {
     user(state){
@@ -16,6 +19,7 @@ const store = new Vuex.Store ({
     }
   },
   mutations: {
+    ...vuexfireMutations,
     SET_LOGGED_IN(state, value) {
       state.user.loggedIn = value;
     },
@@ -34,7 +38,11 @@ const store = new Vuex.Store ({
       } else {
         commit("SET_USER", null);
       }
-    }
+    },
+    bindComics: firestoreAction(({ bindFirestoreRef }) => {
+      // return the promise returned by `bindFirestoreRef`
+      return bindFirestoreRef('comics', db.collection('comics'))
+    }),
   },
   modules: {
   }
