@@ -31,24 +31,40 @@
             </b-collapse>
           </div>
           <hr>
-          <button class="button" @click="deleteCrop(crop.id)">Delete Crop</button>
+          <b-button variant="danger" v-b-modal="crop.id">Delete Crop</b-button>
         </div>
         <hr>
+        <!-- START: Delete Crop Modal --->
+        <div>
+          <b-modal :id="crop.id" title="Delete Crop" hide-footer>
+            <h3>Are you sure?</h3>
+            <b-button variant="danger" @click="deleteCrop(crop.id)">Delete Crop</b-button>
+          </b-modal>
+        </div>
+        <!-- END: Delete Crop Modal --->
       </article>
     </div>
     
-    <form @submit.prevent="addCrop(name, startDate, flowerWeeks, notes)">
-      <h2>Add a New Crop</h2>
-      <input type="text" v-model="name" placeholder="Strain Name" class="input" required>
-      <input type="date" v-model="startDate" placeholder="startDate" class="input" required>
-      <input type="number" v-model="flowerWeeks" placeholder="# Flower Weeks" class="input" required>
-      <hr>
-      <input type="date" v-model="notes.date" placeholder="Note Date" class="input" required>
-      <br>
-      <textarea v-model="notes.note" placeholder="Notes" class="input" required></textarea>
-      <hr>
-      <button type="submit" class="button">Add New Crop</button>
-    </form>
+    <!-- START: Add Crop Modal --->
+    <div>
+      <b-button v-b-modal.add-crop>Add New Crop</b-button>
+
+      <b-modal id="add-crop" title="Add a New Crop" hide-footer>
+        <form @submit.prevent="addCrop(name, startDate, flowerWeeks, notes)">
+          <input type="text" v-model="name" placeholder="Strain Name" class="input" required>
+          <input type="date" v-model="startDate" placeholder="startDate" class="input" required>
+          <input type="number" v-model="flowerWeeks" placeholder="# Flower Weeks" class="input" required>
+          <hr>
+          <input type="date" v-model="notes.date" placeholder="Note Date" class="input" required>
+          <br>
+          <textarea v-model="notes.note" placeholder="Notes" class="input" required></textarea>
+          <hr>
+          <b-button type="submit" class="button">Add New Crop</b-button>
+        </form>
+      </b-modal>
+    </div>
+    <!-- END: Add Crop Modal --->
+
   </div>
 </template>
 <script>
@@ -89,6 +105,7 @@ export default {
         this.flowerWeeks = ''
         this.notes = ''
         console.log("Document successfully written!");
+        this.hideModal('add-crop');
       }).catch((error) => {
         console.error("Error writing document: ", error);
       });
@@ -96,6 +113,7 @@ export default {
     deleteCrop (id) {
       db.collection("crops").doc(id).delete().then(function() {
           console.log("Document successfully deleted!");
+          this.hideModal(id);
       }).catch(function(error) {
           console.error("Error removing document: ", error);
       });
@@ -117,7 +135,13 @@ export default {
       var today = new Date();
       var date = today.getFullYear()+'-'+("0" + (today.getMonth() + 1)).slice(-2)+'-'+("0" + today.getDate()).slice(-2);
       return date;
-    }
+    },
+    hideModal(id) {
+      this.$bvModal.hide(id);
+    },
+    showModal(id) {
+      this.$bvModal.show(id);
+    },
     /*logout () {
       firebase.auth().signOut().then(() => {
         this.$router.replace('login')
