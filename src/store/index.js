@@ -11,7 +11,8 @@ const store = new Vuex.Store ({
       loggedIn: false,
       data: null
     },
-    comics: []
+    comics: [],
+    crops: []
   },
   getters: {
     user(state){
@@ -42,6 +43,10 @@ const store = new Vuex.Store ({
     bindComics: firestoreAction(({ bindFirestoreRef }) => {
       // return the promise returned by `bindFirestoreRef`
       return bindFirestoreRef('comics', db.collection('comics'))
+    }),
+    bindCrops: firestoreAction(({ bindFirestoreRef }) => {
+      // return the promise returned by `bindFirestoreRef`
+      return bindFirestoreRef('crops', db.collection('crops'))
     }),
   },
   modules: {

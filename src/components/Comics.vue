@@ -6,10 +6,10 @@
         <div>
           <img style="margin: 10px" :src="comic.image" height="291px" width="192px">
           <p >{{ comic.name }}</p>
-          <hr>
           <button class="button" @click="deleteComic(comic.id)">
             Delete
           </button>
+          <hr>
         </div>
       </article>
     </div>
@@ -30,16 +30,15 @@ export default {
   name: 'Comics',
   data () {
     return {
-      comics: [],
       name: '',
       image: ''
     }
   },
-  firestore () {
+  /*firestore () {
     return {
       comics: db.collection('comics').orderBy('createdAt')
     }
-  },
+  },*/
   methods: {
     addComic (name, image) {
       const createdAt = new Date()
@@ -49,26 +48,36 @@ export default {
         createdAt: createdAt
       }
       //db.collection('comics').add({ name, image, createdAt })
-      db.collection("comics").doc(name).set(doc).then(function() {
-        // Clear values
-        //this.name = ''
-        //this.image = ''
+      //db.collection("comics").doc(name).set(doc).then(() => {
+      db.collection("comics").add(doc).then(() => {
+        // Clear form values
+        this.name = ''
+        this.image = ''
         console.log("Document successfully written!");
-      }).catch(function(error) {
+      }).catch((error) => {
         console.error("Error writing document: ", error);
       });
     },
     deleteComic (id) {
-      db.collection('comics').doc(id).delete()
+      db.collection("comics").doc(id).delete().then(function() {
+          console.log("Document successfully deleted!");
+      }).catch(function(error) {
+          console.error("Error removing document: ", error);
+      });
     },
     logout () {
       firebase.auth().signOut().then(() => {
         this.$router.replace('login')
       })
+    },
+  },
+  computed: {
+    comics(){
+      return this.$store.state.comics;
     }
   },
-  /*created(){
-    this.comics = db.collection('comics').orderBy('createdAt')
-  }*/
+  created () {
+    this.$store.dispatch('bindComics', db.collection('comics'))
+  }
 }
 </script>

@@ -7,7 +7,7 @@
           <div class="card-body">
             <div v-if="user.loggedIn">
               <div v-if="user.loggedIn" class="alert alert-success" role="alert">You are logged in!</div>
-              <Comics />
+              <Crops />
             </div>
             <div v-else>Please <router-link to="login">Log In</router-link></div>
           </div>
@@ -18,7 +18,7 @@
 </template>
 <script>
 import { mapGetters } from "vuex";
-import Comics from '@/components/Comics.vue'
+import Crops from '@/components/Crops.vue'
 
 export default {
   computed: {
@@ -28,7 +28,7 @@ export default {
     })
   },
   components: {
-    Comics
+    Crops
   }
 };
 </script>
