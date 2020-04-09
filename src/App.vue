@@ -15,19 +15,14 @@ import Navbar from './components/Navbar.vue'
 export default {
   data: () => {
     return {
-      journals: [],
-      parents: [],
+      //journals: [],
     }
   },
   components: {
     Navbar,
-    //Nav
   },
   created(){
-    /*axios
-        .get('http://localhost:8888/wp-json/wp/v2/pages?per_page=100')
-        .then((res) => { this.journals = res.data })
-        .catch(error => console.log(error));*/
+    
   }
 }
 </script>

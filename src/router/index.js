@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Login from '../components/Login'
 import Register from '../components/Register'
 import Dashboard from '../components/Dashboard'
+import Journal from '../views/Journal'
 
 Vue.use(VueRouter)
 
@@ -35,6 +36,12 @@ const routes = [
     path: '/dashboard',
     name: 'Dashboard',
     component: Dashboard
+  },
+  {
+    path: '/journal/:index',
+    component: Journal,
+    name: 'Journal',
+    props: true
   },
 ]
 

@@ -1,19 +1,10 @@
 <template>
   <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-8">
-        <div class="card">
-          <div class="card-header">Dashboard</div>
-          <div class="card-body">
-            <div v-if="user.loggedIn">
-              <div v-if="user.loggedIn" class="alert alert-success" role="alert">You are logged in!</div>
-              <Crops />
-            </div>
-            <div v-else>Please <router-link to="login">Log In</router-link></div>
-          </div>
-        </div>
-      </div>
+    <h1>Dashboard</h1>
+    <div v-if="user.loggedIn" class="row">
+      <Crops />
     </div>
+    <div v-else>Please <router-link to="/login">Log In</router-link></div>
   </div>
 </template>
 <script>

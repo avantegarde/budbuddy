@@ -12,8 +12,8 @@
     <b-collapse id="user-nav" is-nav>
       <b-navbar-nav>
         <b-nav-item to="/">Home</b-nav-item>
-        <b-nav-item to="about">About</b-nav-item>
-        <b-nav-item to="dashboard">Dashboard</b-nav-item>
+        <b-nav-item to="/about">About</b-nav-item>
+        <b-nav-item to="/dashboard">Dashboard</b-nav-item>
         <!-- <b-nav-item to="schedule">Journal</b-nav-item>
         <b-nav-item to="schedule">Schedule</b-nav-item>
         <b-nav-item to="resources">Resources</b-nav-item>
