@@ -6,6 +6,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import './assets/style.css'
+Vue.use(require('vue-moment'));
 //import * as firebase from "firebase";
 import firebase from "firebase/app"
 //import 'firebase/firestore'

@@ -1,18 +1,18 @@
 <template>
-  <div class="col-md-4">
-    <div class="journal-item morph rounded">
-      <router-link v-bind:to="{name: 'Journal', params: { index: index } }">
-        <div class="journal-header">
-          <!-- <strains :strains="crop ? crop.name : null"></strains> -->
-          <h2 class="title">{{ crop.name }}</h2>
-        </div>
-        <!-- <div class="featured-img" :style="{ backgroundImage: featuredImage(journal.featured_image) }"></div> -->
-      </router-link>
-      <!-- <div>
-        <b-button variant="danger" v-b-modal="crop.id">Delete</b-button>
-        <modal-delete-crop :crop="crop" />
-      </div> -->
-    </div>
+  <div class="journal-item morph rounded">
+    <router-link v-bind:to="{name: 'Journal', params: { index: index } }">
+      <div class="journal-header">
+        <!-- <strains :strains="crop ? crop.name : null"></strains> -->
+        <h2 class="title">{{ crop.name }}</h2>
+      </div>
+      <!-- <div class="featured-img" :style="{ backgroundImage: featuredImage(journal.featured_image) }"></div> -->
+    </router-link>
+    <p>Started: {{ crop.startDate |moment("from", "now") }}</p>
+    <p>Flower Weeks: {{ crop.flowerWeeks }}</p>
+    <!-- <div>
+      <b-button variant="danger" v-b-modal="crop.id">Delete</b-button>
+      <modal-delete-crop :crop="crop" />
+    </div> -->
   </div>
 </template>
 <script>
@@ -21,10 +21,13 @@ export default {
   props: ['crop', 'index'],
   components: {
     //ModalDeleteCrop
-  }
+  },
 }
 </script>
 <style scoped>
+.journal-item > a {
+  display: block;
+}
 .journal-header {
   display: block;
   width: 100%;
@@ -38,8 +41,9 @@ export default {
 }
 .journal-item .title {
   display: block;
-  width: calc(100% - 115px);
-  float: left;
+  width: 100%;
+  font-size: 18px;
+  line-height: 18px;
 }
 .journal-item .strains {
   display: block;

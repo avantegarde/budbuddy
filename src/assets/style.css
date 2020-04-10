@@ -46,10 +46,10 @@ a:focus {
   outline: none !important;
 }
 .morph.rounded {
-  border-radius: 20px;
+  border-radius: 20px !important;
 }
 .morph.rounded .rounded-inner {
-  border-radius: 20px;
+  border-radius: 20px !important;
 }
 input.morph {
   border-radius: 50%;
@@ -127,4 +127,28 @@ input[type="checkbox"].ios-checkbox:checked + label:after {
   border-radius: 2rem;
   height: 100%;
   opacity: 0.8;
+}
+/* Text Icon */
+.text-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  font-size: 24px;
+  text-align: center;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(135deg, #00FDF1, #5433ff, #E400F7);
+}
+.text-icon.blue-green {
+  background-image: linear-gradient(90deg, #22ff82, #21bdff, #5433ff);
+}
+/*--- Journal Items ---*/
+.journal-item {
+  width: 250px;
+  height: 250px;
+  margin: 15px;
 }

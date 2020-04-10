@@ -46,7 +46,7 @@ const store = new Vuex.Store ({
     }),
     bindCrops: firestoreAction(({ bindFirestoreRef }) => {
       // return the promise returned by `bindFirestoreRef`
-      return bindFirestoreRef('crops', db.collection('crops').orderBy('startDate'))
+      return bindFirestoreRef('crops', db.collection('crops').orderBy('startDate', 'desc'))
     }),
   },
   modules: {
