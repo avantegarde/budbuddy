@@ -7,7 +7,8 @@
       </div>
       <!-- <div class="featured-img" :style="{ backgroundImage: featuredImage(journal.featured_image) }"></div> -->
     </router-link>
-    <p>Started: {{ crop.startDate |moment("from", "now") }}</p>
+    <p>Started: {{ this.$moment() | moment("diff", crop.startDate, "days") }} Days ago</p>
+    <p>Age: {{ this.$moment({hours: 0}).diff(crop.startDate, 'days') }} Days</p>
     <p>Flower Weeks: {{ crop.flowerWeeks }}</p>
     <!-- <div>
       <b-button variant="danger" v-b-modal="crop.id">Delete</b-button>
