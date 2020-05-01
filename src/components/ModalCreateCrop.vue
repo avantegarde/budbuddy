@@ -28,6 +28,31 @@ export default {
         date: this.today(),
         note: ''
       },
+      nutes: {
+        units: 'ml',
+        power: [
+          {
+            name: 'si',
+            p: 100,
+          },
+          {
+            name: 'calmag',
+            p: 100,
+          },
+          {
+            name: 'micro',
+            p: 100,
+          },
+          {
+            name: 'gro',
+            p: 100,
+          },
+          {
+            name: 'bloom',
+            p: 100,
+          },
+        ]
+      }
     }
   },
   methods: {
@@ -39,6 +64,7 @@ export default {
         startDate: startDate,
         flowerWeeks: flowerWeeks,
         notes: [notes],
+        nutes: this.nutes,
       }
       db.collection("crops").add(doc).then(() => {
         // Clear form values

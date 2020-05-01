@@ -8,7 +8,7 @@
       <!-- <div class="featured-img" :style="{ backgroundImage: featuredImage(journal.featured_image) }"></div> -->
     </router-link>
     <p>Started: {{ this.$moment() | moment("diff", crop.startDate, "days") }} Days ago</p>
-    <p>Age: {{ this.$moment({hours: 0}).diff(crop.startDate, 'days') }} Days</p>
+    <p>Age: {{ getDisplayAge(crop.startDate) }}</p>
     <p>Flower Weeks: {{ crop.flowerWeeks }}</p>
     <!-- <div>
       <b-button variant="danger" v-b-modal="crop.id">Delete</b-button>
@@ -20,6 +20,16 @@
 //import ModalDeleteCrop from '@/components/ModalDeleteCrop.vue'
 export default {
   props: ['crop', 'index'],
+  
+  methods: {
+    getDisplayAge(d){
+      var currDay = this.$moment(new Date());
+      var date = this.$moment(d);
+      var diff = this.$moment.duration(currDay.diff(date));
+      var display = Math.floor(diff.asWeeks()) + " weeks, " + diff.days()%7 + " days.";
+      return display;
+    },
+  },
   components: {
     //ModalDeleteCrop
   },

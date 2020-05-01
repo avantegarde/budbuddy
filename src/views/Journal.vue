@@ -27,6 +27,16 @@
           </form>
         </b-collapse>
       </div>
+      <!-- START: Schedule --->
+      <div>
+        <b-button v-b-toggle.schedule>
+          <span class="when-opened">Close</span> <span class="when-closed">Open</span> Schedule
+        </b-button>
+        <b-collapse id="schedule">
+          <Schedule v-bind:crop="crop" />
+        </b-collapse>
+      </div>
+      <!-- END: Schedule --->
       <hr>
       <b-button variant="danger" v-b-modal="crop.id">Delete Crop</b-button>
       <modal-delete-crop :crop="crop" />
@@ -40,6 +50,7 @@
 <script>
 import { db } from '../store/db'
 import ModalDeleteCrop from '@/components/ModalDeleteCrop.vue'
+import Schedule from '@/components/Schedule.vue'
 
 export default {
   name: 'Journal',
@@ -84,7 +95,8 @@ export default {
     this.$store.dispatch('bindCrops', db.collection('crops'))
   },
   components: {
-    ModalDeleteCrop
+    ModalDeleteCrop,
+    Schedule
   }
 }
 </script>
