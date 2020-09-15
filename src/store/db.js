@@ -1,13 +1,16 @@
 import firebase from 'firebase/app'
 import 'firebase/firestore'
 
+/**
+ * Input your firebase/firestore app credentials below
+ */
 const configOptions = {
-  apiKey: "AIzaSyAONPC5ZYM6ed-W5qlVxYPzfa7oY-aQIDk",
-  authDomain: "budbuddy-232c4.firebaseapp.com",
-  databaseURL: "https://budbuddy-232c4.firebaseio.com",
-  projectId: "budbuddy-232c4",
-  storageBucket: "gs://budbuddy-232c4.appspot.com",
-  messagingSenderId: "475467948845"
+  apiKey: "API_KEY",
+  authDomain: "PROJECT_ID.firebaseapp.com",
+  databaseURL: "https://PROJECT_ID.firebaseio.com",
+  projectId: "PROJECT_ID",
+  storageBucket: "PROJECT_ID.appspot.com",
+  messagingSenderId: "SENDER_ID"
 };
 
 //firebase.initializeApp(configOptions);
